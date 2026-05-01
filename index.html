@@ -243,6 +243,8 @@
     .service-card{
       display:block;
       text-decoration:none;
+      cursor:pointer;
+      font-family:inherit;
       background:white;
       border:1px solid var(--line);
       border-radius:22px;
@@ -277,6 +279,12 @@
     .service-detail{
       background:linear-gradient(135deg,#f8fbff,#eef6ff);
       border-top:1px solid var(--line);
+      display:none;
+      padding-top:40px;
+    }
+
+    .service-detail.active{
+      display:block;
     }
 
     .detail-card{
@@ -468,64 +476,66 @@
     </div>
 
     <div class="services-grid">
-      <a class="service-card" href="#interior-page"><div class="icon">🏠</div><h3>Interior Painting</h3><p>Smooth, clean finishes for walls, trim, doors, and living spaces.</p></a>
-      <a class="service-card" href="#exterior-page"><div class="icon">🏡</div><h3>Exterior Painting</h3><p>Protect and refresh your home’s exterior with high-quality paint.</p></a>
-      <a class="service-card" href="#cabinets-page"><div class="icon">🗄️</div><h3>Cabinet Refinishing</h3><p>Give kitchens and bathrooms a fresh, updated look.</p></a>
-      <a class="service-card" href="#wallpaper-page"><div class="icon">📄</div><h3>Wallpaper Removal</h3><p>Careful removal and wall prep for a clean final finish.</p></a>
-      <a class="service-card" href="#deck-page"><div class="icon">🪵</div><h3>Deck Staining</h3><p>Refresh and protect decks with professional stain application.</p></a>
+      <button class="service-card" onclick="toggleService('interior-panel')"><div class="icon">🏠</div><h3>Interior Painting</h3><p>Smooth, clean finishes for walls, trim, doors, and living spaces.</p></button>
+      <button class="service-card" onclick="toggleService('exterior-panel')"><div class="icon">🏡</div><h3>Exterior Painting</h3><p>Protect and refresh your home’s exterior with high-quality paint.</p></button>
+      <button class="service-card" onclick="toggleService('cabinets-panel')"><div class="icon">🗄️</div><h3>Cabinet Refinishing</h3><p>Give kitchens and bathrooms a fresh, updated look.</p></button>
+      <button class="service-card" onclick="toggleService('wallpaper-panel')"><div class="icon">📄</div><h3>Wallpaper Removal</h3><p>Careful removal and wall prep for a clean final finish.</p></button>
+      <button class="service-card" onclick="toggleService('deck-panel')"><div class="icon">🪵</div><h3>Deck Staining</h3><p>Refresh and protect decks with professional stain application.</p></button>
     </div>
   </div>
 </section>
 
-<section class="service-detail" id="interior-page">
-  <div class="container detail-card">
-    <h2>Interior Painting</h2>
-    <p>View before and after photos, then request an estimate by text.</p>
-    <div class="photo-row">
-      <div><p class="photo-label">Before</p><img src="interior-before.jpg" alt="Interior painting before photo"></div>
-      <div><p class="photo-label">After</p><img src="interior-after.jpg" alt="Interior painting after photo"></div>
+<section class="service-detail" id="service-details">
+  <div class="container">
+    <div class="detail-card service-panel" id="interior-panel">
+      <h2>Interior Painting</h2>
+      <p>View before and after photos, then request an estimate by text.</p>
+      <div class="photo-row">
+        <div><p class="photo-label">Before</p><img src="interior-before.jpg" alt="Interior painting before photo"></div>
+        <div><p class="photo-label">After</p><img src="interior-after.jpg" alt="Interior painting after photo"></div>
+      </div>
+      <a class="btn btn-primary" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20an%20Interior%20Painting%20estimate%20from%20LGS%20Painting%20Services.">Text for Interior Estimate</a>
     </div>
-    <a class="btn btn-primary" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20an%20Interior%20Painting%20estimate%20from%20LGS%20Painting%20Services.">Text for Interior Estimate</a>
-  </div>
 
-  <div class="container detail-card" id="exterior-page">
-    <h2>Exterior Painting</h2>
-    <p>View before and after photos, then request an estimate by text.</p>
-    <div class="photo-row">
-      <div><p class="photo-label">Before</p><img src="exterior-before.jpg" alt="Exterior painting before photo"></div>
-      <div><p class="photo-label">After</p><img src="exterior-after.jpg" alt="Exterior painting after photo"></div>
+    <div class="detail-card service-panel" id="exterior-panel">
+      <h2>Exterior Painting</h2>
+      <p>View before and after photos, then request an estimate by text.</p>
+      <div class="photo-row">
+        <div><p class="photo-label">Before</p><img src="exterior-before.jpg" alt="Exterior painting before photo"></div>
+        <div><p class="photo-label">After</p><img src="exterior-after.jpg" alt="Exterior painting after photo"></div>
+      </div>
+      <a class="btn btn-primary" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20an%20Exterior%20Painting%20estimate%20from%20LGS%20Painting%20Services.">Text for Exterior Estimate</a>
     </div>
-    <a class="btn btn-primary" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20an%20Exterior%20Painting%20estimate%20from%20LGS%20Painting%20Services.">Text for Exterior Estimate</a>
-  </div>
 
-  <div class="container detail-card" id="cabinets-page">
-    <h2>Cabinet Refinishing</h2>
-    <p>View before and after photos, then request an estimate by text.</p>
-    <div class="photo-row">
-      <div><p class="photo-label">Before</p><img src="cabinets-before.jpg" alt="Cabinet refinishing before photo"></div>
-      <div><p class="photo-label">After</p><img src="cabinets-after.jpg" alt="Cabinet refinishing after photo"></div>
+    <div class="detail-card service-panel" id="cabinets-panel">
+      <h2>Cabinet Refinishing</h2>
+      <p>View before and after photos, then request an estimate by text.</p>
+      <div class="photo-row">
+        <div><p class="photo-label">Before</p><img src="cabinets-before.jpg" alt="Cabinet refinishing before photo"></div>
+        <div><p class="photo-label">After</p><img src="cabinets-after.jpg" alt="Cabinet refinishing after photo"></div>
+      </div>
+      <a class="btn btn-primary" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20a%20Cabinet%20Refinishing%20estimate%20from%20LGS%20Painting%20Services.">Text for Cabinet Estimate</a>
     </div>
-    <a class="btn btn-primary" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20a%20Cabinet%20Refinishing%20estimate%20from%20LGS%20Painting%20Services.">Text for Cabinet Estimate</a>
-  </div>
 
-  <div class="container detail-card" id="wallpaper-page">
-    <h2>Wallpaper Removal</h2>
-    <p>View before and after photos, then request an estimate by text.</p>
-    <div class="photo-row">
-      <div><p class="photo-label">Before</p><img src="wallpaper-before.jpg" alt="Wallpaper removal before photo"></div>
-      <div><p class="photo-label">After</p><img src="wallpaper-after.jpg" alt="Wallpaper removal after photo"></div>
+    <div class="detail-card service-panel" id="wallpaper-panel">
+      <h2>Wallpaper Removal</h2>
+      <p>View before and after photos, then request an estimate by text.</p>
+      <div class="photo-row">
+        <div><p class="photo-label">Before</p><img src="wallpaper-before.jpg" alt="Wallpaper removal before photo"></div>
+        <div><p class="photo-label">After</p><img src="wallpaper-after.jpg" alt="Wallpaper removal after photo"></div>
+      </div>
+      <a class="btn btn-primary" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20a%20Wallpaper%20Removal%20estimate%20from%20LGS%20Painting%20Services.">Text for Wallpaper Estimate</a>
     </div>
-    <a class="btn btn-primary" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20a%20Wallpaper%20Removal%20estimate%20from%20LGS%20Painting%20Services.">Text for Wallpaper Estimate</a>
-  </div>
 
-  <div class="container detail-card" id="deck-page">
-    <h2>Deck Staining</h2>
-    <p>View before and after photos, then request an estimate by text.</p>
-    <div class="photo-row">
-      <div><p class="photo-label">Before</p><img src="deck-before.jpg" alt="Deck staining before photo"></div>
-      <div><p class="photo-label">After</p><img src="deck-after.jpg" alt="Deck staining after photo"></div>
+    <div class="detail-card service-panel" id="deck-panel">
+      <h2>Deck Staining</h2>
+      <p>View before and after photos, then request an estimate by text.</p>
+      <div class="photo-row">
+        <div><p class="photo-label">Before</p><img src="deck-before.jpg" alt="Deck staining before photo"></div>
+        <div><p class="photo-label">After</p><img src="deck-after.jpg" alt="Deck staining after photo"></div>
+      </div>
+      <a class="btn btn-primary" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20a%20Deck%20Staining%20estimate%20from%20LGS%20Painting%20Services.">Text for Deck Estimate</a>
     </div>
-    <a class="btn btn-primary" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20a%20Deck%20Staining%20estimate%20from%20LGS%20Painting%20Services.">Text for Deck Estimate</a>
   </div>
 </section>
 
@@ -596,5 +606,27 @@
   <p>© 2026 LGS Painting Services. Proudly serving Connecticut.</p>
 </footer>
 
+<script>
+  let openService = null;
+
+  function toggleService(panelId) {
+    const detailSection = document.getElementById('service-details');
+    const panels = document.querySelectorAll('.service-panel');
+    const selectedPanel = document.getElementById(panelId);
+
+    if (openService === panelId) {
+      detailSection.classList.remove('active');
+      panels.forEach(panel => panel.style.display = 'none');
+      openService = null;
+      return;
+    }
+
+    panels.forEach(panel => panel.style.display = 'none');
+    selectedPanel.style.display = 'block';
+    detailSection.classList.add('active');
+    openService = panelId;
+    detailSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+</script>
 </body>
 </html>
