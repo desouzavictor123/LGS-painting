@@ -1,515 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LGS Painting Services</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LGS Painting Services</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
 
-    :root {
-      --blue: #0057c8;
-      --dark-blue: #061b3f;
-      --light-blue: #eef5ff;
-      --white: #ffffff;
-      --gray: #5f6b7a;
-      --border: #dbe7ff;
-    }
+    :root{
+      --blue:#0b63ce;
+      --bright:#1778ff;
+      --navy:#061b3f;
+      --soft:#eef6ff;
+      --ice:#f8fbff;
+      --white:#ffffff;
+      --text:#10213f;
+      --muted:#637083;
+      --line:#d8e8ff;
+      --shadow:0 18px 45px rgba(6,27,63,.14);
+    }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--white);
-      color: var(--dark-blue);
-      line-height: 1.6;
-    }
+    body{
+      font-family:Arial,Helvetica,sans-serif;
+      background:var(--white);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
 
-    header {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+    header{
+      background:rgba(255,255,255,.96);
+      border-bottom:1px solid var(--line);
+      position:sticky;
+      top:0;
+      z-index:100;
+      box-shadow:0 6px 22px rgba(6,27,63,.06);
+    }
 
-    nav {
-      max-width: 1200px;
-      margin: auto;
-      padding: 16px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 25px;
-    }
+    nav{
+      max-width:1200px;
+      margin:auto;
+      padding:14px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
 
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .logo-wrap img{
+      height:76px;
+      width:auto;
+      display:block;
+    }
 
-    .logo-wrap img {
-      height: 72px;
-      width: auto;
-      display: block;
-    }
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:26px;
+    }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
+    .nav-links a{
+      color:var(--navy);
+      text-decoration:none;
+      font-size:14px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+    }
 
-    .nav-links a {
-      color: var(--dark-blue);
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: .4px;
-      text-transform: uppercase;
-    }
+    .nav-links a:hover{color:var(--blue)}
 
-    .nav-links a:hover {
-      color: var(--blue);
-    }
+    .phone-btn{
+      background:linear-gradient(135deg,var(--bright),var(--blue));
+      color:white!important;
+      padding:12px 18px;
+      border-radius:10px;
+      box-shadow:0 10px 24px rgba(11,99,206,.25);
+    }
 
-    .phone-btn {
-      background: var(--blue);
-      color: white !important;
-      padding: 12px 18px;
-      border-radius: 7px;
-      box-shadow: 0 8px 18px rgba(0, 87, 200, 0.24);
-    }
+    .hero{
+      position:relative;
+      min-height:720px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      align-items:center;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(23,120,255,.14), transparent 28%),
+        linear-gradient(135deg,#ffffff 0%,#f6fbff 40%,#dfeeff 100%);
+      overflow:hidden;
+    }
 
-    .hero {
-      min-height: 650px;
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      align-items: center;
-      background: linear-gradient(90deg, #ffffff 0%, #ffffff 42%, rgba(255,255,255,.82) 55%, rgba(255,255,255,.08) 100%),
-                  linear-gradient(135deg, #f7fbff, #dfeaff);
-      overflow: hidden;
-      position: relative;
-    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      right:-160px;
+      top:-120px;
+      width:720px;
+      height:720px;
+      background:linear-gradient(135deg,var(--bright),var(--navy));
+      border-radius:50%;
+      opacity:.16;
+    }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 55%;
-      height: 100%;
-      background: linear-gradient(135deg, #f7f9fc 0%, #ffffff 28%, #0a2e63 29%, #0a2e63 100%);
-      z-index: 0;
-    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      left:-10%;
+      bottom:-120px;
+      width:120%;
+      height:220px;
+      background:var(--white);
+      border-radius:50% 50% 0 0;
+      box-shadow:0 -14px 30px rgba(11,99,206,.06);
+    }
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      padding: 80px 24px 80px max(24px, calc((100vw - 1200px) / 2));
-      max-width: 620px;
-    }
+    .hero-content{
+      position:relative;
+      z-index:2;
+      padding:80px 24px 100px max(24px,calc((100vw - 1200px)/2));
+      max-width:650px;
+    }
 
-    .eyebrow {
-      color: var(--blue);
-      font-weight: 900;
-      letter-spacing: 1.5px;
-      font-size: 14px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
+    .badge{
+      display:inline-block;
+      background:#e8f2ff;
+      color:var(--blue);
+      border:1px solid #cfe3ff;
+      padding:9px 15px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-bottom:18px;
+    }
 
-    .hero h1 {
-      font-size: clamp(46px, 6vw, 78px);
-      line-height: .98;
-      color: var(--dark-blue);
-      font-weight: 900;
-      text-transform: uppercase;
-      margin-bottom: 22px;
-    }
+    .hero h1{
+      font-size:clamp(46px,6vw,82px);
+      line-height:.98;
+      color:var(--navy);
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:20px;
+    }
 
-    .accent-line {
-      width: 95px;
-      height: 5px;
-      background: var(--blue);
-      margin-bottom: 24px;
-      border-radius: 99px;
-    }
+    .hero h1 span{color:var(--blue)}
 
-    .hero p {
-      font-size: 21px;
-      color: #263b5e;
-      max-width: 470px;
-      margin-bottom: 30px;
-    }
+    .accent-line{
+      width:95px;
+      height:5px;
+      background:linear-gradient(90deg,var(--bright),var(--navy));
+      border-radius:999px;
+      margin-bottom:24px;
+    }
 
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
+    .hero p{
+      font-size:21px;
+      color:#344865;
+      max-width:500px;
+      margin-bottom:32px;
+    }
 
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      padding: 15px 22px;
-      border-radius: 7px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .3px;
-      font-size: 14px;
-      transition: .2s;
-    }
+    .buttons{display:flex;flex-wrap:wrap;gap:14px}
 
-    .btn-primary {
-      background: var(--blue);
-      color: white;
-      border: 2px solid var(--blue);
-      box-shadow: 0 10px 22px rgba(0, 87, 200, .24);
-    }
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      padding:15px 23px;
+      border-radius:10px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.3px;
+      font-size:14px;
+      transition:.2s;
+    }
 
-    .btn-outline {
-      background: white;
-      color: var(--blue);
-      border: 2px solid var(--blue);
-    }
+    .btn-primary{
+      background:linear-gradient(135deg,var(--bright),var(--blue));
+      color:white;
+      border:2px solid var(--blue);
+      box-shadow:0 12px 26px rgba(11,99,206,.26);
+    }
 
-    .btn:hover {
-      transform: translateY(-2px);
-    }
+    .btn-outline{
+      background:white;
+      color:var(--blue);
+      border:2px solid var(--blue);
+      box-shadow:0 12px 26px rgba(6,27,63,.08);
+    }
 
-    .hero-visual {
-      position: relative;
-      z-index: 1;
-      min-height: 650px;
-      display: flex;
-      align-items: stretch;
-      justify-content: flex-end;
-      padding-left: 20px;
-    }
+    .btn:hover{transform:translateY(-2px)}
 
-    .blue-room {
-      width: 100%;
-      min-height: 650px;
-      background: linear-gradient(135deg, #123a75, #061b3f);
-      position: relative;
-      overflow: hidden;
-    }
+    .hero-card{
+      position:relative;
+      z-index:2;
+      margin-right:max(24px,calc((100vw - 1200px)/2));
+      background:linear-gradient(135deg,#0d3976,#061b3f);
+      border-radius:34px;
+      min-height:500px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      border:10px solid white;
+    }
 
-    .blue-room::before {
-      content: "";
-      position: absolute;
-      inset: 60px 50px;
-      border: 2px solid rgba(255,255,255,.18);
-      box-shadow: inset 0 0 0 16px rgba(255,255,255,.04);
-    }
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:55px;
+      border:2px solid rgba(255,255,255,.18);
+      box-shadow:inset 0 0 0 16px rgba(255,255,255,.04);
+    }
 
-    .blue-room::after {
-      content: "Professional Finish";
-      position: absolute;
-      bottom: 45px;
-      right: 45px;
-      background: rgba(255,255,255,.92);
-      color: var(--dark-blue);
-      padding: 18px 22px;
-      border-radius: 12px;
-      font-weight: 900;
-      box-shadow: 0 18px 35px rgba(0,0,0,.18);
-    }
+    .paint-box{
+      position:absolute;
+      left:35px;
+      bottom:35px;
+      right:35px;
+      background:white;
+      border-radius:18px;
+      padding:24px;
+      box-shadow:0 20px 40px rgba(0,0,0,.22);
+    }
 
-    section {
-      padding: 80px 24px;
-    }
+    .paint-box h3{color:var(--navy);font-size:24px;margin-bottom:6px}
+    .paint-box p{color:var(--muted);font-size:15px}
 
-    .container {
-      max-width: 1200px;
-      margin: auto;
-    }
+    section{padding:85px 24px}
+    .container{max-width:1200px;margin:auto}
 
-    .section-title {
-      text-align: center;
-      max-width: 750px;
-      margin: 0 auto 55px;
-    }
+    .section-title{text-align:center;max-width:780px;margin:0 auto 55px}
+    .section-title span{color:var(--blue);font-weight:900;text-transform:uppercase;letter-spacing:1.6px;font-size:14px}
+    .section-title h2{font-size:clamp(34px,5vw,52px);line-height:1.1;margin:12px 0;color:var(--navy)}
+    .section-title p{color:var(--muted);font-size:18px}
 
-    .section-title span {
-      color: var(--blue);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-size: 14px;
-    }
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:18px;
+    }
 
-    .section-title h2 {
-      font-size: clamp(34px, 5vw, 48px);
-      line-height: 1.1;
-      margin: 12px 0 14px;
-      color: var(--dark-blue);
-    }
+    .service-card{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:30px 20px;
+      text-align:center;
+      box-shadow:0 14px 35px rgba(6,27,63,.08);
+      transition:.25s;
+    }
 
-    .section-title p {
-      color: var(--gray);
-      font-size: 18px;
-    }
+    .service-card:hover{
+      transform:translateY(-7px);
+      border-color:#9fc8ff;
+      box-shadow:0 20px 45px rgba(11,99,206,.14);
+    }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
+    .icon{
+      width:72px;
+      height:72px;
+      margin:0 auto 16px;
+      border-radius:20px;
+      background:linear-gradient(135deg,#e7f2ff,#ffffff);
+      border:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:34px;
+    }
 
-    .service-card {
-      padding: 28px 20px;
-      text-align: center;
-      border-right: 1px solid var(--border);
-    }
+    .service-card h3{font-size:18px;color:var(--navy);margin-bottom:8px}
+    .service-card p{font-size:15px;color:var(--muted)}
 
-    .service-card:last-child {
-      border-right: none;
-    }
+    .trust-strip{
+      background:linear-gradient(135deg,#061b3f,#073b84,#0b63ce);
+      color:white;
+      padding:50px 24px;
+      position:relative;
+      overflow:hidden;
+    }
 
-    .icon {
-      font-size: 46px;
-      color: var(--blue);
-      margin-bottom: 12px;
-    }
+    .trust-strip::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.18),transparent 28%);
+    }
 
-    .service-card h3 {
-      font-size: 18px;
-      color: var(--dark-blue);
-      margin-bottom: 8px;
-    }
+    .trust-grid{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:24px;
+    }
 
-    .service-card p {
-      color: var(--gray);
-      font-size: 15px;
-    }
+    .trust-item{
+      padding:20px;
+      border-right:1px solid rgba(255,255,255,.25);
+    }
 
-    .trust-strip {
-      background: linear-gradient(135deg, #061b3f, #004da8);
-      color: white;
-      padding: 45px 24px;
-    }
+    .trust-item:last-child{border-right:none}
+    .trust-item h3{text-transform:uppercase;font-size:18px;margin-bottom:8px}
+    .trust-item p{color:#dceaff;font-size:15px}
 
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 28px;
-    }
+    .contact{background:linear-gradient(135deg,var(--soft),#ffffff)}
 
-    .trust-item {
-      border-right: 1px solid rgba(255,255,255,.35);
-      padding-right: 24px;
-    }
+    .contact-card{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:50px 30px;
+      text-align:center;
+      box-shadow:var(--shadow);
+      max-width:850px;
+      margin:auto;
+    }
 
-    .trust-item:last-child {
-      border-right: none;
-    }
+    .contact-card h2{font-size:42px;color:var(--navy);margin-bottom:10px}
+    .contact-card p{color:var(--muted);font-size:18px;margin-bottom:25px}
 
-    .trust-item h3 {
-      font-size: 17px;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
+    footer{
+      background:var(--navy);
+      color:white;
+      text-align:center;
+      padding:26px 20px;
+    }
 
-    .trust-item p {
-      color: #dbeaff;
-      font-size: 15px;
-    }
-
-    .contact {
-      background: var(--light-blue);
-    }
-
-    .contact-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 45px 30px;
-      text-align: center;
-      box-shadow: 0 18px 45px rgba(6, 27, 63, .1);
-    }
-
-    .contact-card h2 {
-      font-size: 38px;
-      color: var(--dark-blue);
-      margin-bottom: 10px;
-    }
-
-    .contact-card p {
-      color: var(--gray);
-      font-size: 18px;
-      margin-bottom: 24px;
-    }
-
-    footer {
-      padding: 24px;
-      background: white;
-      color: var(--dark-blue);
-      border-top: 1px solid var(--border);
-      text-align: center;
-    }
-
-    @media (max-width: 900px) {
-      nav {
-        flex-direction: column;
-      }
-
-      .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 18px;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
-      }
-
-      .hero::after,
-      .hero-visual {
-        display: none;
-      }
-
-      .hero-content {
-        padding: 70px 24px;
-        text-align: left;
-      }
-
-      .services-grid,
-      .trust-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .service-card,
-      .trust-item {
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .logo-wrap img {
-        height: 64px;
-      }
-    }
-  </style>
+    @media(max-width:900px){
+      nav{flex-direction:column;padding:16px}
+      .nav-links{flex-wrap:wrap;justify-content:center;gap:14px}
+      .logo-wrap img{height:82px}
+      .hero{grid-template-columns:1fr;min-height:auto}
+      .hero-content{padding:65px 24px 45px;text-align:left}
+      .hero-card{margin:0 24px 80px;min-height:320px;border-radius:24px}
+      .services-grid,.trust-grid{grid-template-columns:1fr}
+      .trust-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.25)}
+      .hero h1{font-size:48px}
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <nav>
-      <div class="logo-wrap">
-        <img src="hero.jpg" alt="LGS Painting Services Logo">
-      </div>
+<header>
+  <nav>
+    <div class="logo-wrap">
+      <img src="hero.jpg" alt="LGS Painting Services Logo">
+    </div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+      <a class="phone-btn" href="tel:2037942276">(203) 794-2276</a>
+    </div>
+  </nav>
+</header>
 
-      <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-        <a class="phone-btn" href="tel:2037942276">(203) 794-2276</a>
-      </div>
-    </nav>
-  </header>
+<section id="home" class="hero">
+  <div class="hero-content">
+    <div class="badge">Serving Connecticut</div>
+    <h1>LGS <span>Painting</span> Services</h1>
+    <div class="accent-line"></div>
+    <p>Professional painting and refinishing services for homes and businesses with clean preparation, sharp lines, and lasting results.</p>
+    <div class="buttons">
+      <a href="#contact" class="btn btn-primary">Get a Free Estimate</a>
+      <a href="#services" class="btn btn-outline">View Services</a>
+    </div>
+  </div>
 
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <div class="eyebrow">Connecticut Painting Company</div>
-      <h1>LGS Painting Services</h1>
-      <div class="accent-line"></div>
-      <p>Professional painting and refinishing services with a clean, flawless finish.</p>
-      <div class="buttons">
-        <a href="#contact" class="btn btn-primary">Get a Free Estimate</a>
-        <a href="#services" class="btn btn-outline">Our Services</a>
-      </div>
-    </div>
+  <div class="hero-card">
+    <div class="paint-box">
+      <h3>Quality • Precision • Trust</h3>
+      <p>Interior painting, exterior painting, cabinet refinishing, wallpaper removal, deck staining, and power washing.</p>
+    </div>
+  </div>
+</section>
 
-    <div class="hero-visual">
-      <div class="blue-room"></div>
-    </div>
-  </section>
+<section id="services">
+  <div class="container">
+    <div class="section-title">
+      <span>Our Services</span>
+      <h2>Quality Work. Lasting Results.</h2>
+      <p>Reliable residential and commercial painting services throughout Connecticut.</p>
+    </div>
 
-  <section id="services">
-    <div class="container">
-      <div class="section-title">
-        <span>Our Services</span>
-        <h2>Quality Work. Lasting Results.</h2>
-        <p>Interior and exterior painting services for homes and businesses throughout Connecticut.</p>
-      </div>
+    <div class="services-grid">
+      <div class="service-card"><div class="icon">🏠</div><h3>Interior Painting</h3><p>Smooth, clean finishes for walls, trim, doors, and living spaces.</p></div>
+      <div class="service-card"><div class="icon">🏡</div><h3>Exterior Painting</h3><p>Protect and refresh your home’s exterior with high-quality paint.</p></div>
+      <div class="service-card"><div class="icon">🗄️</div><h3>Cabinet Refinishing</h3><p>Give kitchens and bathrooms a fresh, updated look.</p></div>
+      <div class="service-card"><div class="icon">📄</div><h3>Wallpaper Removal</h3><p>Careful removal and wall prep for a clean final finish.</p></div>
+      <div class="service-card"><div class="icon">🪵</div><h3>Deck Staining</h3><p>Refresh and protect decks with professional stain application.</p></div>
+    </div>
+  </div>
+</section>
 
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="icon">🏠</div>
-          <h3>Interior Painting</h3>
-          <p>Smooth, clean, professional finishes for your indoor spaces.</p>
-        </div>
+<div class="trust-strip">
+  <div class="container trust-grid">
+    <div class="trust-item"><h3>Quality</h3><p>Premium materials and careful preparation on every project.</p></div>
+    <div class="trust-item"><h3>Reliable</h3><p>On time, respectful, and focused on customer satisfaction.</p></div>
+    <div class="trust-item"><h3>Professional</h3><p>Clean work areas, sharp finishes, and dependable service.</p></div>
+    <div class="trust-item"><h3>Connecticut</h3><p>Proudly serving homes and businesses across Connecticut.</p></div>
+  </div>
+</div>
 
-        <div class="service-card">
-          <div class="icon">🏡</div>
-          <h3>Exterior Painting</h3>
-          <p>Protect and refresh your home’s exterior with quality paint and care.</p>
-        </div>
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="contact-card">
+      <h2>Request a Free Estimate</h2>
+      <p>Call, text, or email LGS Painting Services to get started.</p>
+      <a href="tel:2037942276" class="btn btn-primary">Call Now</a>
+      <a href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20a%20quote%20from%20LGS%20Painting%20Services" class="btn btn-outline">Text for Estimate</a>
+      <a href="mailto:dasilvaleonan09@gmail.com" class="btn btn-outline">Email Us</a>
+    </div>
+  </div>
+</section>
 
-        <div class="service-card">
-          <div class="icon">🗄️</div>
-          <h3>Cabinet Refinishing</h3>
-          <p>Upgrade cabinets with a durable finish that looks brand new.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="icon">🧱</div>
-          <h3>Wallpaper Removal</h3>
-          <p>Remove old wallpaper and prep your walls for a clean finish.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="icon">🪵</div>
-          <h3>Deck Staining</h3>
-          <p>Refresh and protect decks with professional stain application.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="trust-strip">
-    <div class="container trust-grid">
-      <div class="trust-item">
-        <h3>Quality</h3>
-        <p>Premium materials and careful preparation on every project.</p>
-      </div>
-      <div class="trust-item">
-        <h3>Reliable</h3>
-        <p>On time, respectful, and focused on your satisfaction.</p>
-      </div>
-      <div class="trust-item">
-        <h3>Experienced</h3>
-        <p>Skilled painting service for homes and businesses.</p>
-      </div>
-      <div class="trust-item">
-        <h3>Connecticut</h3>
-        <p>Proudly serving customers across Connecticut.</p>
-      </div>
-    </div>
-  </div>
-
-  <section id="contact" class="contact">
-    <div class="container">
-      <div class="contact-card">
-        <h2>Request a Free Estimate</h2>
-        <p>Call, text, or email LGS Painting Services to get started.</p>
-        <a href="tel:2037942276" class="btn btn-primary">Call Now</a>
-        <a href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20a%20quote%20from%20LGS%20Painting%20Services" class="btn btn-outline">Text for Estimate</a>
-        <a href="mailto:dasilvaleonan09@gmail.com" class="btn btn-outline">Email Us</a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2026 LGS Painting Services. Servicing Connecticut.</p>
-  </footer>
+<footer>
+  <p>© 2026 LGS Painting Services. Proudly serving Connecticut.</p>
+</footer>
 
 </body>
 </html>
