@@ -277,6 +277,7 @@
     }
 
     .service-panel {
+      position: relative;
       display: none;
       max-width: 980px;
       margin: auto;
@@ -285,6 +286,27 @@
       border-radius: 32px;
       padding: 38px;
       box-shadow: 0 25px 60px rgba(31,74,160,0.14);
+    }
+
+    .close-service {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      background: #edf4ff;
+      color: var(--iris-dark);
+      font-size: 1.5rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(31,74,160,0.12);
+    }
+
+    .close-service:hover {
+      background: var(--iris-blue);
+      color: white;
     }
 
     .service-panel h2 {
@@ -637,10 +659,16 @@
         </div>
 
         <div class="services-grid">
-          <button class="service-card" onclick="toggleService('painting-panel')">
+          <button class="service-card" onclick="toggleService('interior-panel')">
             <div class="icon">🏠</div>
-            <h3>Interior & Exterior Painting</h3>
-            <p>Clean, professional painting for walls, trim, siding, doors, and more.</p>
+            <h3>Interior Painting</h3>
+            <p>Professional interior wall, trim, ceiling, and room painting with clean finishes.</p>
+          </button>
+
+          <button class="service-card" onclick="toggleService('exterior-panel')">
+            <div class="icon">🏡</div>
+            <h3>Exterior Painting</h3>
+            <p>High-quality exterior painting for siding, trim, doors, garages, and more.</p>
           </button>
 
           <button class="service-card" onclick="toggleService('power-panel')">
@@ -671,13 +699,27 @@
     </section>
 
     <section class="service-detail" id="service-details">
-      <div class="service-panel" id="painting-panel">
-        <h2>Interior & Exterior Painting</h2>
-        <p>Before and after photos for painting projects.</p>
+      <div class="service-panel" id="interior-panel">
+        <button class="close-service" onclick="closeServices()">×</button>
+        <h2>Interior Painting</h2>
+        <p>Before and after photos for interior painting projects.</p>
         <div class="photo-row">
-          <div><div class="photo-label">Before</div><img src="painting-before.jpg" alt="Painting before"></div>
-          <div><div class="photo-label">After</div><img src="painting-after.jpg" alt="Painting after"></div>
+          <div><div class="photo-label">Before</div><img src="interior-before.jpg" alt="Interior painting before"></div>
+          <div><div class="photo-label">After</div><img src="interior-after.jpg" alt="Interior painting after"></div>
         </div>
+        <a class="btn btn-primary" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20an%20Interior%20Painting%20estimate%20from%20LGS%20Painting%20Services.">Text for Interior Estimate</a>
+      </div>
+
+      <div class="service-panel" id="exterior-panel">
+        <button class="close-service" onclick="closeServices()">×</button>
+        <h2>Exterior Painting</h2>
+        <p>Before and after photos for exterior painting projects.</p>
+        <div class="photo-row">
+          <div><div class="photo-label">Before</div><img src="exterior-before.jpg" alt="Exterior painting before"></div>
+          <div><div class="photo-label">After</div><img src="exterior-after.jpg" alt="Exterior painting after"></div>
+        </div>
+        <a class="btn btn-primary" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20an%20Exterior%20Painting%20estimate%20from%20LGS%20Painting%20Services.">Text for Exterior Estimate</a>
+      </div>
         <a class="btn btn-primary" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20a%20Painting%20estimate%20from%20LGS%20Painting%20Services.">Text for Painting Estimate</a>
       </div>
 
@@ -768,6 +810,14 @@
 
   <script>
     let openService = null;
+
+    function closeServices() {
+      const detailSection = document.getElementById('service-details');
+      const panels = document.querySelectorAll('.service-panel');
+      detailSection.classList.remove('active');
+      panels.forEach(panel => panel.style.display = 'none');
+      openService = null;
+    }
 
     function toggleService(panelId) {
       const detailSection = document.getElementById('service-details');
